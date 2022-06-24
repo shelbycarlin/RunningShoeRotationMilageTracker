@@ -1,0 +1,32 @@
+body {
+    background-color: rgb(192, 211, 195);
+    
+    .appContainer{
+        padding: 2%;
+        border: rgb(148, 163, 150) solid;
+    background-color: rgb(205, 215, 206)
+    }
+    
+    .totalMiles{
+        padding: 2%;
+        background-color: rgb(245, 252, 243);
+        border: rgb(148, 163, 150) solid
+
+    }
+    .shoeCard{
+        padding: 2%;
+        background-color: rgb(245, 252, 243);
+        border: rgb(148, 163, 150) solid;
+    }
+    .shoeCreatorContainer{
+        padding: 2%;
+        background-color: rgb(245, 252, 243);;
+        border: rgb(148, 163, 150) solid;
+        div{
+            margin-top: 3%;
+        }
+        button{
+            margin-top: 3%;
+        }
+    }
+}

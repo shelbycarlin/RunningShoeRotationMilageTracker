@@ -1,22 +1,24 @@
 import React from 'react';
+class ShoeCard extends React.Component {
+    render(){
 
-const ShoeCard = props => {
     const {
-        shoe: {shoe},
-        shoe: {type},
-        shoe: {brand},
-        shoe: {model},
-        shoe: {miles},
-        shoe:{milesLeft},
-        addMiles,
+        //shoeindividual grab the info from the shoe list element
+        shoeIndividual: {shoe},
+        shoeIndividual: {type},
+        shoeIndividual: {brand},
+        shoeIndividual: {model},
+        shoeIndividual: {miles},
+        shoeIndividual:{milesLeft},
+        addMiles: {addMiles},
 
-    } = props;
+    } = this.props;
 
     //what we want returned to the screen
     return(
-       <div>
+       <div className='shoeCard'>
            <p>
-            <label htmlFor= "shoeId">Shoe</label>   
+            <label htmlFor= "shoeId">Shoe </label>   
             <span id= "shoeId">{shoe}</span>
            </p>
            <p>
@@ -37,13 +39,16 @@ const ShoeCard = props => {
            </p>
            <p>
                <label htmlFor="milesLeft">Miles Left:</label>
-               <span id="milesLeft">{miles ? (milesLeft-miles) : 0}</span>
+               <span id="milesLeft">{ (milesLeft-miles) }</span>
            </p>
            <div>
-               <button name={shoe} onClick={e=> { addMiles(e.target.name)}}>Add Miles</button>
+               <button 
+               name={shoe}
+               onClick={ e => addMiles(e.target.name)}>Add Miles</button>
            </div>
        </div>
     )
+  }
 }
 
 export default ShoeCard;

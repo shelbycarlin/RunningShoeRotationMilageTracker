@@ -5,9 +5,9 @@ import { connect } from 'react-redux'
 //import actions 
 
 //import child components (containers and displays)
-//import TotalMileDisplay from '../components/TotalMileDisplay'
+import TotalMileDisplay from '../components/TotalMileDisplay.jsx'
 //importing actions from the reducer
-import { addMiles, addShoe } from '../reducers/shoe/actions.js';
+import { addMiles, addShoe, setBrand, setModel, setType } from '../reducers/shoe/actions.js';
 //import AddShoeCreator to render the component
 import AddShoeCreator from '../components/AddShoeCreator.jsx'
 //import the ShoeRotationDisplay to render the component below
@@ -21,25 +21,40 @@ const mapStateToProps = (state) => {
     return ({
     //need shoe list for shoeRotation container 
     shoeList: state.shoes.shoeList,
+    totalMiles: state.shoes.totalMiles,
     //needShoeNumber for display
-    shoe: state.shoe,
+    //shoe: state.shoe,
     //need shoe type for creator 
-    type: state.type,
+    //type: state.type,
     //need shoe brand for creator 
-    brand: state.brand,
+    addBrand: state.shoes.addBrand,
+    addModel: state.shoes.addModel,
+    addType: state.shoes.addType
     //need shoe model for creator 
-    model: state.model,
-    milesLeft: state.milesLeft
+    //model: state.model,
+   // milesLeft: state.milesLeft
 })};
 
 const mapDispatchToProps = dispatch => ({
     //need this functionality to be passed down to the addShoeCreator
-    addShoe: (newShoe) => {
-        dispatch(addShoe(newShoe))
+    addShoe: () => {
+        dispatch(addShoe())
     },
     //passed down for shoeRotationDisplay
     addMiles: (shoe) => {
         dispatch(addMiles(shoe))
+    },
+
+    updateNewBrand: (brand) => {
+        dispatch(setBrand(brand))
+    },
+
+    updateNewModel: (model) => {
+        dispatch(setModel(model))
+    },
+
+    updateNewType: (type) => {
+        dispatch(setType(type))
     }
 
 
@@ -52,15 +67,37 @@ class MainContainer extends Component {
     render() {
         const {
             shoeList,
+            addMiles,
             addShoe,
-            milesLeft,
+            totalMiles,
+            addBrand,
+            addModel,
+            updateNewBrand,
+            updateNewModel,
+            updateNewType
         } = this.props
         return (
 
-            <div>
-                <h3>hello?</h3>
-                <AddShoeCreator addShoe = {addShoe} milesLeft = {milesLeft}/>
-                <ShoeRotationDisplay addMiles = {addMiles} shoeList = {shoeList}/>
+            <div className='mainContainerBox'>
+                <h1>Running Shoe Rotation Milage Tracker</h1>
+                <div className='totalMiles'>
+                <TotalMileDisplay 
+                    totalMiles={totalMiles}/>
+                </div>
+                <AddShoeCreator 
+                    addShoe = {addShoe} 
+                    shoeList = {shoeList} 
+                    addBrand ={addBrand}
+                    addModel ={addModel}
+                    updateNewBrand ={updateNewBrand}
+                    updateNewModel={updateNewModel}
+                    updateNewType={updateNewType}
+                    />
+                <ShoeRotationDisplay 
+                    addMiles = {addMiles} 
+                    shoeList = {shoeList}
+                    updateNewType={updateNewType}
+                    />
             </div>
         );
     };

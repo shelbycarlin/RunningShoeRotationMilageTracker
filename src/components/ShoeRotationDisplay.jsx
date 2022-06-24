@@ -1,21 +1,25 @@
 import React from "react";
 import ShoeCard from './ShoeCard.jsx'
 
+//we need to connect to the store to get the func props
+class ShoeRotationDisplay extends React.Component {
+        render() {
 
-const ShoeRotationDisplay = props => {
         const {
             shoeList,
             addMiles,
-            milesLeft,
+            updateNewType,
 
-        } = props
+        } = this.props
 
     const shoeCardComponents = [];
-    for (let i =0; i < props.shoeList.length; i++) {
+    for (let i =0; i < shoeList.length; i++) {
         shoeCardComponents.push(
             <ShoeCard
-            shoeList = {shoeList[i]}
+            key = {'Shoe' + i}
+            shoeIndividual = {shoeList[i]}
             addMiles = {addMiles}
+            updateNewType={type}
 
             />
         )
@@ -23,11 +27,15 @@ const ShoeRotationDisplay = props => {
 
     
         return (
-            <h5>Shoe Rotation</h5>
+            <div>
+                <h2>Current Shoe Rotation</h2>
+                    {shoeCardComponents}
+            </div>
             
            
         );
     };
+}
 
 
 

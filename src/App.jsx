@@ -1,13 +1,12 @@
 import React from 'react';
 import MainContainer from './containers/MainContainer.jsx';
+import './scss/styles.scss'
 
 class App extends React.Component {
     render() {
       return (
-        <div>
-          <h1>This working still lol</h1>
+        <div className='appContainer'>
           <MainContainer></MainContainer>
-
         </div>
       )
     }
